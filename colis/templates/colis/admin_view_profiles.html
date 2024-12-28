@@ -1,0 +1,51 @@
+{% extends 'colis/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Profils des utilisateurs</h2>
+    {% if messages %}
+    <div class="container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <strong>{{ message.tags|title }}!</strong> {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    
+    <div class="table-responsive">
+        <table class="table table-secondary table-hover table-bordered">
+            <thead class="table table-primary">
+                <tr>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profile in profiles %}
+                {% if not profile.user.is_staff %}
+                <tr>
+                    <td>{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
+                    <td>{{ profile.user.email }}</td>
+                    <td>{{ profile.phone_number }}</td>
+                    <td>
+                        
+                            <a href="{% url 'admin_delete_user' profile.user.username %}" class="btn btn-outline-danger">Supprimer</a>
+
+                            {% csrf_token %}
+                        </form>
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

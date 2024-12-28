@@ -1,0 +1,40 @@
+{% extends 'colis/base.html' %}
+
+{% block title %}
+    Voir le compte
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+    <div class="card text-center text-bg-secondary mb-3" style="width: 40rem;">
+
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">Mon Compte</h4>
+            <a class="btn btn-outline-info btn-sm" href="{% url 'user_dashboard' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a> 
+        </div>
+
+    
+
+        <div class="card-body">
+            <h3 class="card-title"><i class="fa fa-user" aria-hidden="true"></i> {{ user.last_name }} {{ user.first_name }}</h3>
+            <hr>
+            <div class="text-start">
+                <p><strong>Nom d'utilisateur :</strong> {{ user.username }}</p>
+                <p><strong>Prénom :</strong> {{ user.first_name }}</p>
+                <p><strong>Nom :</strong> {{ user.last_name }}</p>
+                <p><strong>Email :</strong> {{ user.email }}</p>
+                <p><strong>Numéro de téléphone :</strong> {{ profile.phone_number }}</p>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+            <a class="btn btn-outline-info" href="{% url 'update_profile' %}">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Modifier
+            </a>
+            <a class="btn btn-outline-danger" href="{% url 'delete_profile' %}">
+                <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

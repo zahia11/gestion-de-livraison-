@@ -1,0 +1,46 @@
+{% extends 'colis/base.html' %}
+
+{% block title %}
+    la liste des colis 
+{%endblock%}
+
+{% block content %}
+
+<div class="card   text-center text-bg-secondary mb-3" style="width: 50rem;">
+    
+    <div class="card-header d-flex justify-content-between align-items-center text-center">
+        
+        <a class="btn btn-outline-info btn-sm" href="{% url 'dashboard' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Retour</a> 
+        
+        
+    </div>
+
+        <div class="card-body ">
+        
+
+            <h3 style="text-align: center;">Details</h3>
+            <hr>
+            <h4 class='card-title'><i class="fa fa-user" aria-hidden="true"></i>Colis num: {{coli.code}}</h4>
+            <p><strong>Produit : {{coli.nom_produits}}</a></p>
+            <p><strong>Client : {{coli.user}}</a></p>
+            <p><strong>Nom du destinataire: </strong> {{coli.nom_destinataire}}</p>
+            <p><strong>Région: </strong> {{coli.region}}  </p>
+            <p><strong>Adresse du destinataire : </strong>  {{coli.adr_destinataire}}</p>
+            <p><strong>Numéro de Téléphone du destinataire: </strong> {{coli.num_destinataire}}</p>
+            <p><strong>Prix : </strong> {{coli.prix}}</p>
+            <p><strong>Status du  colis: </strong> {{coli.status}}</p>
+            <p><strong>Date de distribution du colis : </strong> {{coli.date_envoi}}</p>
+            
+        </div>
+        <div class="card-footer ">
+            <a class="btn btn-outline-success" href="{% url 'accept' coli.code %}"><i class="fa fa-check fa-shake" aria-hidden="true"></i> Accepter</a>
+            <a class="btn btn-outline-danger" href="{% url 'refuse' coli.code %}"><i class="bi bi-ban" aria-hidden="true"></i> Annuler</a>
+
+            
+          
+    
+     
+    
+    </div>
+{% endblock %}
+    

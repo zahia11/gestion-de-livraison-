@@ -1,0 +1,16 @@
+{% extends 'colis/base.html' %}
+
+{% block title %}
+Confirmation de suppression
+
+{% endblock %}
+
+{% block content %}
+<h1>Supprimer Profile</h1>
+<p><strong>Êtes-vous sûr de vouloir supprimer votre profil ? Cette action est irréversible et supprimera toutes vos données.</strong></p>
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-outline-danger" type="submit"><i class="fa fa-trash" aria-hidden="true"></i> Oui, supprimer mon profil</button>
+    <a class="btn btn-outline-primary" href="{% url 'view_account' %}"><i class="fa fa-arrow-left" aria-hidden="true"></i> Non, je garde mon compte</a>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'colis/base.html' %}
+
+
+
+{% block title %}
+    Modifier colis
+{%endblock%}
+
+
+
+{% block content %}
+    <div class="container bg-light shadow-md p-5 form-layout"> 
+
+        <h3 style="text-align: center;">Modifier colis</h3>
+        <br>
+        <h5 style="text-align: center;">Remplisser ce formulaire pour modifier un colis!</h5>
+        <br>
+        <form method="POST"  autocomplete="off"> 
+            {% csrf_token %} 
+            {{form.as_p}} 
+            <br>
+            <button class="btn btn-outline-info" type="submit" href="{% url 'view_account' %}"  >Modifier</button>
+        
+        </form>
+    </div>
+
+{%endblock%}

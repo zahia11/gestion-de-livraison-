@@ -1,0 +1,36 @@
+{% extends 'colis/base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<body>
+
+    <div class="container bg-light shadow-md p-2 form-layout">
+        <h3> S'authentifier </h3>
+
+        
+
+        <hr>
+        <br>
+
+        <form method="POST" action="{% url 'login' %}" autocomplete="off">
+            {% csrf_token %}
+            {{ form.as_p }}
+    
+
+            <br>
+            <button type="submit" class="btn btn-primary btn-block p-2"> Se connecter </button> 
+        </form>
+
+        <br> 
+        <div class="text-center">
+            <p> Vous n'avez pas un compte?</p> 
+            <a href="{% url 'register' %}">Créer un compte</a> 
+        </div>
+        <br> 
+
+    </div>
+
+</body>
+
+{% endblock %}

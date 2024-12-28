@@ -1,0 +1,18 @@
+{% extends 'colis/base.html' %}
+
+{% block title %}
+    Supprimer le Profil
+{% endblock %}
+
+{% block content %}
+<div class="container bg-light shadow-md p-5 form-layout">
+    <h1>Confirmer la suppression</h1>
+    <p>Êtes-vous sûr de vouloir supprimer le compte de {{ client_user.username }} ?</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-outline-danger" type="submit">Confirmer la suppression</button>
+        <a href="{% url 'admin_view_profiles' %}" class="btn btn-outline-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

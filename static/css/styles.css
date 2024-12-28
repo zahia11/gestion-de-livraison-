@@ -1,0 +1,51 @@
+
+.form-layout{
+    border-radius: 30px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    
+
+}
+hr{
+    border: 1px solid #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+  }
+
+
+th, td {
+
+    padding: 8px;
+    text-align: left;
+    border-radius: 10px; /* Set border-radius for rounded corners */
+  }
+
+.message-text{
+  color: white;
+}
+
+.footer {
+  background-color: #343a40;  /* Couleur de fond sombre */
+  color: #fff;  /* Couleur du texte */
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

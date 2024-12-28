@@ -1,0 +1,30 @@
+{% extends 'colis/base.html' %}
+
+
+
+{% block title %}
+    Modifier votre Profile
+{%endblock%}
+
+
+
+{% block content %}
+    <div class="container bg-light shadow-md p-5 form-layout"> <!--bootstrap: class container with light bg color,medium shadow and padding 2-->
+
+        <h3 style="text-align: center;">Modifier votre profile</h3>
+        <br>
+        <h5 style="text-align: center;">Remplisser ce formulaire pour modifier le profile!</h5>
+        <br>
+        
+        
+        <form method="POST"  autocomplete="off"> 
+            {% csrf_token %} 
+            {{form.as_p}} 
+            <br>
+            <button class="btn btn-outline-info" type="submit" ><i class="fa fa-pencil" aria-hidden="true"></i>Confirmer</button>
+        
+        </form>
+    </div>
+    
+
+{%endblock%}

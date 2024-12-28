@@ -1,0 +1,31 @@
+{% extends 'colis/base.html' %}
+
+
+
+
+{% block title %}
+    Ajouter un colis
+{%endblock%}
+
+
+
+{% block content %}
+
+    <div class="container bg-light shadow-md p-5 form-layout"> 
+
+        <h3 style="text-align: center;">Ajouter colis</h3>
+        <br>
+        <h5 style="text-align: center;">Remplissez le formulaire pour ajouter un nouveau colis!</h5>
+        <br>
+        
+        
+        <form method="POST"  autocomplete="off"> 
+            {% csrf_token %} 
+            {{ form.as_p}} 
+            <br>
+            <button class="btn btn-outline-info" type="submit" >Ajouter colis</button>
+        
+        </form>
+    </div>
+
+{%endblock%}

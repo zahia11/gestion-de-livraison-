@@ -1,0 +1,60 @@
+{% extends 'colis/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Bienvenue, {{ user.username }}!</h1>
+    
+    <div class="d-flex justify-content-between mb-4">
+        <h4>Vos colis</h4>
+        <a class="btn btn-outline-info" href="{% url 'new_colis' %}">
+            <i class="fa fa-plus"></i> Ajouter un colis
+        </a>
+    </div>
+    {% if user_colis %}
+        <table class="table table-secondary table-hover table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Référence</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Destinataire</th>
+                    <th scope="col">Région</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Numéro  </th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Status </th>
+                    <th scope="col">Date d'envoi</th>
+                    <th scope="col">Date de distribution</th>
+                    <th scope="col">Voir détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user_coli in user_colis %}
+                    <tr>
+                        <td>{{ user_coli.code }}</td>
+                        <td>{{ user_coli.user }}</td>
+                        <td>{{ user_coli.nom_produits }}</td>
+                        <td>{{ user_coli.nom_destinataire }}</td>
+                        <td>{{ user_coli.region }}</td>
+                        <td>{{ user_coli.adr_destinataire }}</td>
+                        <td>{{ user_coli.num_destinataire }}</td>
+                        <td>{{ user_coli.prix }}</td>
+                        <td>{{ user_coli.status }}</td>
+                        <td>{{ user_coli.date_envoi }}</td>
+                        <td>{{ user_coli.date_distribution }}</td>
+                        <td>
+                            <a class="btn btn-outline-info btn-sm" href="{% url 'user_coli' user_coli.code %}">
+                                <i class="fa fa-eye" aria-hidden="true"></i> Voir détails
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            <p>Aucun colis n'a été trouvé.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

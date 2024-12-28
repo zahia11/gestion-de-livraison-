@@ -1,0 +1,58 @@
+{% extends 'colis/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Bienvenue, {{ user.username }}!</h1>
+    
+    <div class="d-flex justify-content-between mb-4">
+        <h4>Tous les colis</h4>
+      
+    </div> 
+    {% if all_colis %}
+        <table class="table table-secondary table-hover table-bordered">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col">Référence</th>
+                    <th scope="col">Client</th>
+                    <th scope="col">Produit</th>
+                    <th scope="col">Destinataire</th>
+                    <th scope="col">Région</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Numéro</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Date d'envoi</th>
+                    <th scope="col">Date de distribution</th>
+                    <th scope="col">Voir détails</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for coli in all_colis %}
+                    <tr>
+                        <td>{{ coli.code }}</td>
+                        <td>{{ coli.user }}</td>
+                        <td>{{ coli.nom_produits }}</td>
+                        <td>{{ coli.nom_destinataire }}</td>
+                        <td>{{ coli.region }}</td>
+                        <td>{{ coli.adr_destinataire }}</td>
+                        <td>{{ coli.num_destinataire }}</td>
+                        <td>{{ coli.prix }}</td>
+                        <td>{{ coli.status }}</td>
+                        <td>{{ coli.date_envoi }}</td>
+                        <td>{{ coli.date_distribution }}</td>
+                        <td>
+                            <a class="btn btn-outline-info btn-sm" href="{% url 'coli' coli.pk %}">
+                                <i class="fa fa-eye" aria-hidden="true"></i> Voir détails
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            <p>Aucun colis n'a été trouvé.</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'colis/base.html' %}
+
+{% block title %}
+  Détails du Colis
+{% endblock %}
+
+{% block content %}
+<div class="card text-center text-bg-secondary mb-4" style="max-width: 50rem; margin: auto;">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <a class="btn btn-outline-info btn-sm" href="{% url 'user_dashboard' %}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i> Retour
+        </a>
+    </div>
+
+    <div class="card-body">
+        <h3 class="card-title">Détails du Colis</h3>
+        <hr>
+        <h4 class="card-title"><i class="fa fa-box" aria-hidden="true"></i> Colis Num: {{ user_coli.code }}</h4>
+
+        <div class="row">
+            <div class="col-md-6 text-start">
+                <p><strong>Produit:</strong> {{ user_coli.nom_produits }}</p>
+                <p><strong>Client:</strong> {{ user_coli.user }}</p>
+                <p><strong>Nom du Destinataire:</strong> {{ user_coli.nom_destinataire }}</p>
+                <p><strong>Région:</strong> {{ user_coli.region }}</p>
+            </div>
+            <div class="col-md-6 text-start">
+                <p><strong>Adresse du destinataire:</strong> {{ user_coli.adr_destinataire }}</p>
+                <p><strong>Numéro de Téléphone du destinataire :</strong> {{ user_coli.num_destinataire }}</p>
+                <p><strong>Prix du colis :</strong> {{ user_coli.prix }} TN</p>
+                <p><strong>Status du Colis:</strong> {{ user_coli.status }}</p>
+                <p><strong>Date d'envoi du colis:</strong> {{ user_coli.date_distribution }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="card-footer d-flex justify-content-between align-items-center">
+        <p class="text-muted mb-0" style="animation: clignoter 1s infinite; color: red;">Vous ne pouvez pas modifier ou supprimer un colis s'il est déjà accepté ou annulé.</p>
+        <style>
+            @keyframes clignoter {
+              0% {
+                opacity: 1;
+              }
+              50% {
+                opacity: 0;
+              }
+              100% {
+                opacity: 1;
+              }
+            }
+            </style>
+        <div class="btn-group" role="group" aria-label="Actions">
+            <a class="btn btn-outline-success me-2" href="{% url 'update_colis' user_coli.pk %}">
+                <i class="fa fa-check" aria-hidden="true"></i> Modifier
+            </a>
+            <a class="btn btn-outline-danger" href="{% url 'delete_colis' user_coli.pk %}">
+                <i class="fa fa-trash" aria-hidden="true"></i> Supprimer
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

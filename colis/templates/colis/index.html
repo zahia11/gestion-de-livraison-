@@ -1,0 +1,24 @@
+{% extends 'colis/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<body>
+  <br>
+  <br>
+  <div class="text-center">
+    <h3> FlashExpress livraison </h3>
+    <br>
+    <h5>Simplifiez l'envoi de vos colis ,sécurisez vos données et restez informés avec FlashExpress livraison!</h5>
+    <hr>
+    <img src="{% static 'image/livraison.jpg' %}" alt="Service de livraison" style="width: 100%; max-width: 500px; height: auto;">
+    <br>
+    <br>
+    <a class="btn btn-primary" type="button" href="{% url 'register' %}">Créez votre compte</a>
+  </div>
+</body>
+
+
+{% endblock  %}
